@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#25080d">
+<meta name="description" content="A luxurious, interactive Indian wedding invitation by Vikash Kumar.">
+<title>Alok & Pragya — Digital Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --wine: #25080d;
+  --burgundy: #4b101d;
+  --deep-red: #360813;
+  --ivory: #fffaf4;
+  --paper: #fff9f2;
+  --blush: #f4e9e6;
+  --gold: #c9a45c;
+  --muted-gold: #a7864d;
+  --rose: #b98b8d;
+  --ink: #5b4145;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --body: "EB Garamond", Georgia, serif;
+  --script: "Great Vibes", cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--wine);
+  color: var(--ivory);
+  font-family: var(--body);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible,
+input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+/* ================= INTRO SCREEN ================= */
+
+.intro {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 25px;
+  background:
+    radial-gradient(ellipse at center, #1c090a 0%, #100405 100%);
+  text-align: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  max-width: 340px;
+  animation: fadeUp 1.5s ease both;
+}
+
+.intro-kicker {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 25px 0;
+  font: 400 25px/1.5 var(--serif);
+  color: #f5e8dc;
+}
+
+.intro-symbol {
+  color: var(--gold);
+  font-size: 20px;
+  letter-spacing: 5px;
+}
+
+.intro p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #cbb8b3;
+}
+
+.brand-signature {
+  margin-top: 35px;
+  font: 34px var(--script);
+  color: var(--gold);
+}
+
+.outline-button {
+  margin-top: 25px;
+  padding: 13px 23px;
+  color: var(--ivory);
+  background: transparent;
+  border: 1px solid var(--gold);
+  text-transform: uppercase;
+  font: 10px var(--serif);
+  letter-spacing: 2px;
+  transition: .3s;
+}
+
+.outline-button:hover {
+  color: var(--wine);
+  background: var(--gold);
+}
+
+/* ================= VIDEO-INSPIRED BACKGROUND ================= */
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(18,4,6,.12), rgba(18,4,6,.35)),
+    #392326;
+}
+
+/* Floral photography background */
+
+.stage::before {
+  content: "";
+  position: absolute;
+  z-index: -3;
+  inset: -25px;
+  background-image:
+    linear-gradient(rgba(18,5,7,.15), rgba(18,5,7,.25)),
+    url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=90");
+  background-position: center;
+  background-size: cover;
+  filter: brightness(.65) saturate(.85);
+  animation: backgroundZoom 24s ease-in-out infinite alternate;
+}
+
+/* Warm fabric-like surface */
+
+.stage::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 15%, rgba(12,3,5,.48) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.24));
+}
+
+/* Decorative floral framing */
+
+.flower {
+  position: absolute;
+  z-index: -1;
+  width: clamp(150px, 27vw, 360px);
+  height: clamp(170px, 30vh, 310px);
+  pointer-events: none;
+  opacity: .9;
+  background:
+    url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85")
+    center / cover;
+  filter: brightness(.7) saturate(1.1);
+  mask-image: linear-gradient(135deg, black 25%, transparent 88%);
+}
+
+.flower.one {
+  top: -30px;
+  left: -15px;
+}
+
+.flower.two {
+  top: -30px;
+  right: -15px;
+  transform: scaleX(-1);
+}
+
+.flower.three {
+  bottom: -45px;
+  left: -20px;
+  transform: rotate(90deg);
+}
+
+.flower.four {
+  bottom: -45px;
+  right: -20px;
+  transform: scaleX(-1) rotate(90deg);
+}
+
+.brand {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.brand-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #f0dcb2;
+}
+
+.brand-name {
+  margin-top: 3px;
+  font: 29px var(--script);
+  color: var(--gold);
+}
+
+.brand-rule {
+  width: 90px;
+  height: 1px;
+  margin: 7px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ================= PHONE MOCKUP ================= */
+
+.phone {
+  position: relative;
+  z-index: 4;
+  flex-shrink: 0;
+  width: min(350px, 89vw);
+  height: min(720px, calc(100svh - 125px));
+  min-height: 440px;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 37px;
+  background: linear-gradient(135deg, #383638, #080809 28%, #252225 75%, #080809);
+  box-shadow:
+    0 30px 75px rgba(0,0,0,.65),
+    0 8px 20px rgba(0,0,0,.4),
+    inset 0 0 0 1px rgba(255,255,255,.12);
+  animation: phoneIn 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 17px;
+  border-radius: 20px;
+  background: #09090a;
+  pointer-events: none;
+}
+
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 37px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.13);
+  pointer-events: none;
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 29px;
+  background: var(--paper);
+  color: var(--ink);
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional faux mobile browser header */
+
+.browser-bar {
+  position: sticky;
+  z-index: 8;
+  top: 0;
+  height: 35px;
+  padding: 5px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,250,244,.97);
+  border-bottom: 1px solid #eadbd1;
+  color: #6d5755;
+  font: 9px Arial, sans-serif;
+}
+
+.browser-lock {
+  position: absolute;
+  left: 12px;
+  font-size: 10px;
+}
+
+.browser-address {
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.phone-controls {
+  position: absolute;
+  z-index: 12;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 7px;
+}
+
+.circle-control {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(201,164,92,.8);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(37,8,13,.92);
+  color: var(--gold);
+  box-shadow: 0 4px 12px #0003;
+}
+
+.circle-control:hover {
+  background: var(--gold);
+  color: var(--wine);
+}
+
+/* ================= INVITATION PAGES ================= */
+
+.page {
+  position: relative;
+  isolation: isolate;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 27px 55px;
+  text-align: center;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.page:nth-of-type(even) {
+  background: #f8eeea;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 12px;
+  border: 1px solid rgba(75,16,29,.25);
+  pointer-events: none;
+}
+
+.page::after {
+  content: "❧";
+  position: absolute;
+  bottom: 22px;
+  color: var(--gold);
+  font-size: 25px;
+}
+
+.eyebrow {
+  color: #99784c;
+  font: 10px var(--serif);
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.ornament {
+  margin: 13px 0;
+  color: var(--gold);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.script {
+  margin: 10px 0;
+  color: var(--burgundy);
+  font: 400 43px/1.18 var(--script);
+}
+
+.heading {
+  margin: 12px 0;
+  color: var(--burgundy);
+  font: 500 28px/1.25 var(--serif);
+}
+
+.copy {
+  margin: 5px 0;
+  color: var(--ink);
+  font: 17px/1.7 var(--body);
+}
+
+.copy.small {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.rule {
+  width: 85px;
+  height: 1px;
+  margin: 17px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.monogram {
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  margin: 18px auto;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--burgundy);
+  font: 39px var(--script);
+  box-shadow: inset 0 0 0 5px rgba(201,164,92,.08);
+}
+
+/* PAGE 1 — BURGUNDY ENVELOPE */
+
+.cover {
+  min-height: 650px;
+  color: var(--ivory);
+  background:
+    linear-gradient(rgba(35,5,12,.57), rgba(35,5,12,.83)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85")
+    center / cover;
+}
+
+.cover::before {
+  inset: 16px;
+  border-color: var(--gold);
+}
+
+.cover .heading,
+.cover .copy,
+.cover .script {
+  color: var(--ivory);
+}
+
+.cover .monogram {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.envelope {
+  position: relative;
+  width: 165px;
+  height: 112px;
+  margin: 23px auto;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, #65172b, #350a15);
+  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+}
+
+.envelope::before,
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.envelope::before {
+  background:
+    linear-gradient(145deg, transparent 49%, rgba(201,164,92,.6) 50%, transparent 51%),
+    linear-gradient(35deg, transparent 49%, rgba(201,164,92,.5) 50%, transparent 51%);
+}
+
+.envelope-flap {
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  height: 59%;
+  background: #591326;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .9s ease;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.seal {
+  position: absolute;
+  z-index: 3;
+  top: 39px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e5cb88;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d9b66d, #8c5b28);
+  color: var(--burgundy);
+  font: 14px var(--serif);
+}
+
+.gold-button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 21px;
+  background: var(--burgundy);
+  border: 1px solid var(--gold);
+  color: var(--ivory);
+  font: 10px var(--serif);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.gold-button:hover {
+  background: var(--gold);
+  color: var(--wine);
+  transform: translateY(-2px);
+}
+
+/* PAGE 2 — ROYAL WELCOME */
+
+.welcome {
+  min-height: 640px;
+  background:
+    linear-gradient(rgba(255,249,242,.72), rgba(255,249,242,.92)),
+    url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=85")
+    center / cover;
+}
+
+.palace-art {
+  width: 100%;
+  height: 175px;
+  margin: 18px 0;
+  border: 1px solid rgba(201,164,92,.65);
+  border-radius: 100px 100px 4px 4px;
+  background:
+    linear-gradient(180deg, transparent, rgba(37,8,13,.2)),
+    url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=85")
+    center / cover;
+}
+
+/* PAGE 4 — COUNTDOWN */
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 5px;
+  width: 100%;
+  margin: 22px 0;
+}
+
+.countdown-item {
+  padding: 12px 1px;
+  background: var(--burgundy);
+  border: 1px solid rgba(201,164,92,.7);
+  color: var(--ivory);
+}
+
+.countdown-item strong {
+  display: block;
+  font: 24px var(--serif);
+  color: var(--gold);
+}
+
+.countdown-item span {
+  display: block;
+  margin-top: 4px;
+  font: 8px var(--serif);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* COUPLE DETAILS */
+
+.couple-box {
+  width: 100%;
+  margin: 14px 0;
+  padding: 20px 10px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+}
+
+.couple-name {
+  color: var(--burgundy);
+  font: 37px var(--script);
+}
+
+.ampersand {
+  margin: 9px 0;
+  color: var(--gold);
+  font: 28px var(--serif);
+}
+
+/* EVENTS */
+
+.events-list {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.event {
+  padding: 16px 6px;
+  border-bottom: 1px solid rgba(201,164,92,.65);
+}
+
+.event:first-child {
+  border-top: 1px solid rgba(201,164,92,.65);
+}
+
+.event h3 {
+  margin: 0 0 5px;
+  color: var(--burgundy);
+  font: 500 23px var(--serif);
+}
+
+.event p {
+  margin: 3px 0;
+  font: 14px/1.6 var(--body);
+}
+
+/* LOCATION */
+
+.location-icon {
+  width: 75px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  margin: 20px auto;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--burgundy);
+  font-size: 31px;
+}
+
+/* RSVP */
+
+.rsvp-form {
+  width: 100%;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.rsvp-form label {
+  display: block;
+  margin: 12px 0 5px;
+  color: var(--burgundy);
+  font-size: 14px;
+}
+
+.rsvp-form input,
+.rsvp-form select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px;
+  border: 1px solid #d8c6bd;
+  border-radius: 0;
+  background: rgba(255,255,255,.6);
+  color: var(--ink);
+}
+
+.rsvp-form button {
+  width: 100%;
+  margin-top: 17px;
+}
+
+.closing-signature {
+  margin-top: 18px;
+  color: var(--burgundy);
+  font: 34px var(--script);
+}
+
+.scene-hint {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  color: #f0dcb2;
+  text-align: center;
+  font: 10px var(--serif);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.scene-hint span {
+  display: inline-block;
+  margin-left: 5px;
+  animation: moveDown 1.5s ease-in-out infinite;
+}
+
+/* PARTICLES */
+
+.particle {
+  position: absolute;
+  z-index: 1;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: .45;
+  pointer-events: none;
+  animation: floatParticle var(--duration, 8s) ease-in-out infinite alternate;
+}
+
+#toast {
+  position: fixed;
+  z-index: 2000;
+  left: 50%;
+  bottom: 20px;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  padding: 12px 17px;
+  transform: translate(-50%, 15px);
+  opacity: 0;
+  pointer-events: none;
+  border: 1px solid var(--gold);
+  background: var(--ivory);
+  color: var(--burgundy);
+  text-align: center;
+  font: 14px var(--serif);
+  transition: opacity .25s, transform .25s;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes phoneIn {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes backgroundZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+
+@keyframes moveDown {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes floatParticle {
+  from { transform: translate(0,0); opacity: .15; }
+  to { transform: translate(12px,-24px); opacity: .7; }
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 900px) {
+  .phone {
+    width: 350px;
+    height: min(720px, calc(100svh - 125px));
+  }
+}
+
+@media (max-width: 500px) {
+  .stage {
+    padding: 8px 6px;
+    gap: 10px;
+  }
+
+  .brand-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .brand-name {
+    font-size: 25px;
+  }
+
+  .phone {
+    width: min(350px, 95vw);
+    height: calc(100svh - 100px);
+    min-height: 420px;
+    padding: 7px;
+    border-radius: 34px;
+  }
+
+  .phone::after {
+    border-radius: 34px;
+  }
+
+  .screen {
+    border-radius: 27px;
+  }
+
+  .page {
+    min-height: 580px;
+    padding: 44px 23px 52px;
+  }
+
+  .cover {
+    min-height: 625px;
+  }
+
+  .flower {
+    width: 150px;
+    height: 185px;
+    opacity: .65;
+  }
+
+  .scene-hint {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-height: 650px) {
+  .stage {
+    gap: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .brand-name {
+    font-size: 23px;
+  }
+
+  .phone {
+    height: calc(100svh - 85px);
+    min-height: 390px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRODUCTION -->
+<div class="intro" id="intro">
+  <div class="intro-content">
+    <div class="intro-kicker">A little wedding magic</div>
+    <h1>Imagine sharing your wedding invitation in your WhatsApp group like this.</h1>
+    <div class="intro-symbol">✦ ❧ ✦</div>
+    <p>A beautiful beginning deserves an invitation to remember.</p>
+    <div class="brand-signature">Vikash Kumar</div>
+    <button class="outline-button" id="startButton" type="button">
+      Experience the invitation
+    </button>
+  </div>
+</div>
+
+<!-- MAIN SCENE -->
+<main class="stage" id="stage">
+  <div class="flower one" aria-hidden="true"></div>
+  <div class="flower two" aria-hidden="true"></div>
+  <div class="flower three" aria-hidden="true"></div>
+  <div class="flower four" aria-hidden="true"></div>
+
+  <header class="brand">
+    <div class="brand-label">Digital Wedding Invitations</div>
+    <div class="brand-name">Vikash Kumar</div>
+    <div class="brand-rule"></div>
+  </header>
+
+  <!-- PHONE -->
+  <div class="phone">
+    <div class="screen" id="screen" tabindex="0"
+         aria-label="Scrollable wedding invitation">
+
+      <div class="browser-bar">
+        <span class="browser-lock">●</span>
+        <span class="browser-address">your-wedding-invitation.com</span>
+      </div>
+
+      <!-- 1. BURGUNDY ENVELOPE -->
+      <section class="page cover" id="cover">
+        <div class="eyebrow" style="color:#e5ca91">
+          With the blessings of our families
+        </div>
+
+        <div class="monogram">P & V</div>
+
+        <p class="copy small" style="color:#f5e6d9">
+          Together with our families
+        </p>
+
+        <h1 class="script">Priya & Varun</h1>
+
+        <div class="rule"></div>
+
+        <p class="copy">
+          Joyfully invite you to celebrate the beginning of their forever.
+        </p>
+
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap"></div>
+          <div class="seal">P♥V</div>
+        </div>
+
+        <button class="gold-button" id="openInvitation" type="button">
+          Open Invitation ✦
+        </button>
+
+        <p class="copy small" style="margin-top:22px;color:#dfc79f">
+          06 · 12 · 2026
+        </p>
+      </section>
+
+      <!-- 2. ROYAL WELCOME -->
+      <section class="page welcome" id="welcome">
+        <div class="eyebrow">The beginning of forever</div>
+
+        <div class="palace-art"
+             role="img"
+             aria-label="Romantic wedding celebration"></div>
+
+        <p class="copy small">Two hearts, one beautiful journey</p>
+        <h2 class="script">We're getting married!</h2>
+
+        <div class="rule"></div>
+
+        <p class="copy">With immense joy and love,</p>
+        <p class="copy">we invite you to share our special day.</p>
+
+        <div class="monogram">P & V</div>
+
+        <p class="copy small">SUNDAY · 06 DECEMBER 2026</p>
+      </section>
+
+      <!-- 3. COUPLE INTRODUCTION -->
+      <section class="page" id="couple">
+        <div class="eyebrow">Two souls, one story</div>
+        <div class="ornament">❧</div>
+
+        <p class="copy small">Together with our families</p>
+
+        <div class="couple-box">
+          <div class="couple-name" data-bride>Priya</div>
+          <div class="ampersand">&</div>
+          <div class="couple-name" data-groom>Varun</div>
+        </div>
+
+        <p class="copy">Joyfully invite you to join us</p>
+        <p class="copy">as we begin our beautiful forever.</p>
+
+        <div class="rule"></div>
+
+        <p class="copy small">YOUR PRESENCE WILL MAKE OUR DAY COMPLETE</p>
+      </section>
+
+      <!-- 4. COUNTDOWN -->
+      <section class="page" id="countdown">
+        <div class="eyebrow">Save the date</div>
+        <div class="ornament">✧</div>
+
+        <h2 class="heading">A date to remember...</h2>
+
+        <p class="copy">Every love story is beautiful,</p>
+        <p class="copy">but ours is our favourite.</p>
+
+        <div class="countdown" aria-label="Countdown to wedding">
+          <div class="countdown-item">
+            <strong id="days">00</strong>
+            <span>Days</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="hours">00</strong>
+            <span>Hours</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="minutes">00</strong>
+            <span>Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <strong id="seconds">00</strong>
+            <span>Seconds</span>
+          </div>
+        </div>
+
+        <div class="rule"></div>
+
+        <h3 class="script">06 December 2026</h3>
+
+        <p class="copy small">
+          A DAY FILLED WITH LOVE, LAUGHTER & FOREVER
+        </p>
+      </section>
+
+      <!-- 5. INVITATION -->
+      <section class="page" id="invitation">
+        <div class="eyebrow">A heartfelt invitation</div>
+
+        <div class="monogram">P & V</div>
+
+        <h2 class="script">You're invited</h2>
+
+        <div class="rule"></div>
+
+        <p class="copy">Join us as we begin our forever.</p>
+        <p class="copy">Your love, blessings and presence</p>
+        <p class="copy">will make our celebration unforgettable.</p>
+
+        <div class="ornament">❧ ✧ ❧</div>
+
+        <p class="copy small">
+          WITH LOVE, THE FAMILIES OF PRIYA & VARUN
+        </p>
+      </section>
+
+      <!-- 6. WEDDING MESSAGE -->
+      <section class="page" id="message">
+        <div class="eyebrow">A message from the heart</div>
+        <div class="ornament">✧</div>
+
+        <h2 class="heading">With joyful hearts</h2>
+
+        <p class="copy">As two families come together,</p>
+        <p class="copy">two hearts promise a lifetime of love.</p>
+
+        <div class="rule"></div>
+
+        <p class="copy small">
+          We request the honour of your gracious presence as we
+          celebrate the sacred union of our beloved
+          Priya and Varun.
+        </p>
+
+        <p class="copy small" style="margin-top:18px">
+          Please join us in making memories that will be cherished
+          for a lifetime.
+        </p>
+
+        <div class="closing-signature">With love & blessings</div>
+      </section>
+
+      <!-- 7. FAMILY DETAILS -->
+      <section class="page" id="families">
+        <div class="eyebrow">Our families, our blessings</div>
+        <div class="ornament">❧</div>
+
+        <div class="couple-box">
+          <p class="copy small">The Bride</p>
+          <div class="couple-name" data-bride>Priya</div>
+          <p class="copy small">Daughter of</p>
+          <p class="copy small" data-bride-family>
+            Mr. & Mrs. Bride's Parents
+          </p>
+        </div>
+
+        <div class="ampersand">&</div>
+
+        <div class="couple-box">
+          <p class="copy small">The Groom</p>
+          <div class="couple-name" data-groom>Varun</div>
+          <p class="copy small">Son of</p>
+          <p class="copy small" data-groom-family>
+            Mr. & Mrs. Groom's Parents
+          </p>
+        </div>
+      </section>
+
+      <!-- 8. EVENTS -->
+      <section class="page" id="events">
+        <div class="eyebrow">The wedding festivities</div>
+
+        <h2 class="script">Wedding Events</h2>
+
+        <p class="copy small">
+          A celebration of love and togetherness
+        </p>
+
+        <div class="rule"></div>
+
+        <div class="events-list" id="eventsList"></div>
+
+        <p class="copy small">
+          We can't wait to celebrate with you!
+        </p>
+      </section>
+
+      <!-- 9. VENUE -->
+      <section class="page" id="venue">
+        <div class="eyebrow">Find your way to our hearts</div>
+
+        <div class="location-icon" aria-hidden="true">⌖</div>
+
+        <h2 class="script">The Venue</h2>
+
+        <h3 class="heading" data-venue-name>Jim Corbett</h3>
+
+        <p class="copy small" data-venue-address>
+          Enter the complete wedding venue address here.
+        </p>
+
+        <div class="rule"></div>
+
+        <p class="copy">Sunday, 06 December 2026</p>
+        <p class="copy">7:00 PM onwards</p>
+
+        <a class="gold-button" id="directionsLink"
+           href="https://www.google.com/maps"
+           target="_blank" rel="noopener noreferrer">
+          Get Directions
+        </a>
+
+        <button class="gold-button" type="button"
+                data-scroll-to="events">
+          View Wedding Events
+        </button>
+      </section>
+
+      <!-- 10. RSVP AND CLOSING -->
+      <section class="page" id="rsvp">
+        <div class="eyebrow">We hope you can join us</div>
+
+        <div class="ornament">✧</div>
+
+        <h2 class="script">Kindly RSVP</h2>
+
+        <p class="copy small">
+          Your presence would mean the world to us.
+          Please let us know if you can celebrate with us.
+        </p>
+
+        <form class="rsvp-form" id="rsvpForm">
+          <label for="guestName">Your Name</label>
+          <input id="guestName" name="guestName"
+                 type="text" maxlength="80"
+                 placeholder="Enter your name" required>
+
+          <label for="attendance">Will you attend?</label>
+          <select id="attendance" name="attendance" required>
+            <option value="Joyfully accepts">Joyfully accepts</option>
+            <option value="Regretfully declines">Regretfully declines</option>
+          </select>
+
+          <label for="guestCount">Number of Guests</label>
+          <select id="guestCount" name="guestCount">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+          </select>
+
+          <button class="gold-button" type="submit">
+            Send RSVP on WhatsApp
+          </button>
+        </form>
+
+        <div class="rule"></div>
+
+        <p class="copy small">
+          Thank you for being part of our story.
+        </p>
+
+        <div class="closing-signature">With love, Priya & Varun</div>
+
+        <p class="copy small" style="margin-top:15px">
+          MADE WITH LOVE BY VIKASH KUMAR
+        </p>
+      </section>
+
+    </div>
+
+    <div class="phone-controls">
+      <button class="circle-control" id="musicButton"
+              type="button" aria-label="Wedding music information"
+              title="Music">♫</button>
+
+      <button class="circle-control" id="topButton"
+              type="button" aria-label="Return to invitation cover"
+              title="Back to top">↑</button>
+    </div>
+  </div>
+
+  <div class="scene-hint">
+    Scroll inside the invitation to explore <span>↓</span>
+  </div>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ======================================================
+   EDIT YOUR WEDDING DETAILS HERE
+   All names, dates, events, location and WhatsApp details
+   can be customized from this single object.
+   ====================================================== */
+
+const WEDDING = {
+  brand: "Vikash Kumar",
+
+  bride: "Priya",
+  groom: "Varun",
+
+  brideFamily: "Mr. & Mrs. Bride's Parents",
+  groomFamily: "Mr. & Mrs. Groom's Parents",
+
+  // Date and time are interpreted in the visitor's
+  // local time zone. Change to your required local time.
+  weddingDate: "2026-12-06T19:00:00",
+
+  venueName: "The Gulmohar Palace",
+  venueAddress: "Jim Corbett, Uttarakhand, India",
+
+  // Enter the actual WhatsApp number with country code.
+  // Example format: 919876543210
+  whatsappNumber: "",
+
+  events: [
+    {
+      title: "Haldi Ceremony",
+      date: "05 December 2026",
+      time: "11:00 AM",
+      venue: "Family Courtyard"
+    },
+    {
+      title: "Mehendi Ceremony",
+      date: "05 December 2026",
+      time: "04:00 PM",
+      venue: "Garden Pavilion"
+    },
+    {
+      title: "Wedding Ceremony",
+      date: "06 December 2026",
+      time: "07:00 PM",
+      venue: "The Gulmohar Palace"
+    },
+    {
+      title: "Reception",
+      date: "06 December 2026",
+      time: "09:00 PM",
+      venue: "Celebration Hall"
+    }
+  ]
+};
+
+/* Intro */
+
+const intro = document.getElementById("intro");
+const startButton = document.getElementById("startButton");
+const screen = document.getElementById("screen");
+
+startButton.addEventListener("click", () => {
+  intro.classList.add("hide");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    document.getElementById("openInvitation").focus({
+      preventScroll: true
+    });
+  }, 1000);
+});
+
+/* Notifications */
+
+let toastTimeout;
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3200);
+}
+
+/* Open invitation */
+
+const envelope = document.getElementById("envelope");
+const openButton = document.getElementById("openInvitation");
+
+openButton.addEventListener("click", () => {
+  envelope.classList.add("open");
+  openButton.textContent = "Invitation Opened";
+
+  setTimeout(() => {
+    document.getElementById("welcome").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 450);
+});
+
+/* Scroll within the phone */
+
+document.querySelectorAll("[data-scroll-to]").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.scrollTo);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+});
+
+document.getElementById("topButton").addEventListener("click", () => {
+  screen.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+/* Populate names and family details */
+
+document.querySelectorAll("[data-bride]").forEach(element => {
+  element.textContent = WEDDING.bride;
+});
+
+document.querySelectorAll("[data-groom]").forEach(element => {
+  element.textContent = WEDDING.groom;
+});
+
+document.querySelector("[data-bride-family]").textContent =
+  WEDDING.brideFamily;
+
+document.querySelector("[data-groom-family]").textContent =
+  WEDDING.groomFamily;
+
+document.querySelector("[data-venue-name]").textContent =
+  WEDDING.venueName;
+
+document.querySelector("[data-venue-address]").textContent =
+  WEDDING.venueAddress;
+
+/* Render the event timeline */
+
+const eventsList = document.getElementById("eventsList");
+
+WEDDING.events.forEach(item => {
+  const article = document.createElement("article");
+  article.className = "event";
+
+  const heading = document.createElement("h3");
+  heading.textContent = item.title;
+
+  const date = document.createElement("p");
+  date.textContent = `${item.date} · ${item.time}`;
+
+  const venue = document.createElement("p");
+  venue.textContent = item.venue;
+
+  article.append(heading, date, venue);
+  eventsList.appendChild(article);
+});
+
+/* Google Maps directions */
+
+document.getElementById("directionsLink").href =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(
+    WEDDING.venueName + " " + WEDDING.venueAddress
+  );
+
+/* Live countdown */
+
+const targetTime = new Date(WEDDING.weddingDate).getTime();
+
+const countdown = {
+  days: document.getElementById("days"),
+  hours: document.getElementById("hours"),
+  minutes: document.getElementById("minutes"),
+  seconds: document.getElementById("seconds")
+};
+
+function updateCountdown() {
+  const difference = targetTime - Date.now();
+
+  if (!Number.isFinite(targetTime)) {
+    Object.values(countdown).forEach(element => {
+      element.textContent = "--";
+    });
+    return;
+  }
+
+  if (difference <= 0) {
+    Object.values(countdown).forEach(element => {
+      element.textContent = "00";
+    });
+
+    document.querySelector("#countdown .heading").textContent =
+      "The special day has arrived!";
+
+    return;
+  }
+
+  const days = Math.floor(difference / 86400000);
+  const hours = Math.floor((difference % 86400000) / 3600000);
+  const minutes = Math.floor((difference % 3600000) / 60000);
+  const seconds = Math.floor((difference % 60000) / 1000);
+
+  countdown.days.textContent = String(days).padStart(2, "0");
+  countdown.hours.textContent = String(hours).padStart(2, "0");
+  countdown.minutes.textContent = String(minutes).padStart(2, "0");
+  countdown.seconds.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* WhatsApp RSVP */
+
+document.getElementById("rsvpForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const guestName = document.getElementById("guestName").value.trim();
+  const attendance = document.getElementById("attendance").value;
+  const guestCount = document.getElementById("guestCount").value;
+
+  if (!guestName) {
+    showToast("Please enter your name.");
+    return;
+  }
+
+  if (!/^\d{8,15}$/.test(WEDDING.whatsappNumber)) {
+    showToast(
+      "Add the WhatsApp number in the WEDDING settings to enable RSVP."
+    );
+    return;
+  }
+
+  const message = [
+    `Wedding RSVP: ${WEDDING.bride} & ${WEDDING.groom}`,
+    `Guest name: ${guestName}`,
+    `Response: ${attendance}`,
+    `Number of guests: ${guestCount}`,
+    `Wedding date: 05/06 December 2026`
+  ].join("\n");
+
+  const url =
+    "https://wa.me/" +
+    WEDDING.whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+/* Decorative floating golden particles */
+
+const stage = document.getElementById("stage");
+
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (!reduceMotion) {
+  for (let i = 0; i < 22; i++) {
+    const particle = document.createElement("span");
+
+    particle.className = "particle";
+    particle.setAttribute("aria-hidden", "true");
+
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+
+    particle.style.setProperty(
+      "--duration",
+      `${6 + Math.random() * 8}s`
+    );
+
+    particle.style.animationDelay =
+      `${Math.random() * -10}s`;
+
+    stage.appendChild(particle);
+  }
+}
+
+/* Music control */
+
+document.getElementById("musicButton").addEventListener("click", () => {
+  showToast("Add your licensed wedding music file to enable playback.");
+});
+
+/* Smooth reveal animations */
+
+if ("IntersectionObserver" in window && !reduceMotion) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.animate(
+        [
+          { opacity: .75, transform: "translateY(8px)" },
+          { opacity: 1, transform: "translateY(0)" }
+        ],
+        {
+          duration: 650,
+          easing: "ease-out",
+          fill: "both"
+        }
+      );
+
+      observer.unobserve(entry.target);
+    });
+  }, {
+    root: screen,
+    threshold: .12
+  });
+
+  document.querySelectorAll(".page").forEach(page => {
+    observer.observe(page);
+  });
+}
+</script>
+
+</body>
+</html>
